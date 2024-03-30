@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <script>
+
+const jogador = {nome:"", vida:0, poder:0};
+const esqueleto = {nome:"", vida:0, poder:0};
+const inimigo = {nome:"", vida:0, poder:0};
+    
+    let fim = false;
+
+    do {            
+
+      let nameUser = prompt("Olá jogador, bem vindo. Digite seu nome: ")
+
+      if (nameUser == null){
+
+        fim = true;
+
+      } else {      
+
+        jogador.nome = nameUser.toUpperCase();
+        
+        let nVida = +prompt(jogador.nome + ", " + "digite a quantidade de vida em pontos até 20")
+
+        if (nVida > 20) {
+          do {
+            nVida = +prompt("Quantidade inválida, digite a quantidade de vida em pontos até 20")
+          } while (nVida > 20);
+        }
+
+        let nPoder = (20 - nVida);
+        jogador.vida = nVida * 100;
+        jogador.poder = nPoder * 10;
+
+        alert(jogador.nome + ", bem vindo! Sua vida iniciou com " + nVida + " de vida e " + nPoder + " de poder.")
+
+       
+
+        alert("Então " + jogador.nome.toUpperCase() + ", já se passaram alguns dias desde que você se juntou à Guilda dos Aventireiros, e você estava se preparando para sua primeira incursão em uma masmorra!\nApós alguns dias de viagem, você chega à entrada da misteriosa masmorra. Você está cheios de expectativas enquanto se aproxima. A entrada da masmorra está diante de você, escura e ameaçadora. As paredes de pedra são escorregadias de umidade, e o ar cheira a mofo e decomposição.");
+
+        let decisao1 = prompt("O que você deseja fazer ?\nA - entrar na caverna\nB - explorar").toUpperCase();            
+
+        if (decisao1 != "A" && decisao1 != "B" && decisao1 != null) {
+          do {
+            decisao1 = prompt("Só pode escolher A ou B. O que você deseja fazer ?\nA - entrar na caverna\nB - explorar").toUpperCase();
+          } while (decisao1 != "A" && decisao1 != "B" && decisao1 != null);
+        }
+
+        if (decisao1 == "A" || decisao1 == "B") {
+
+          if (decisao1 == "B") {
+
+            if (Math.random() > 0.5) {
+
+              alert("Você decide explorar a área circulante. Após uma busca sem resultados na área. você se dirige à masmorra, aceitando a tranquilidade antes do desafio iminente. Embora sem descobertas notáveis, a expectativa cresce enquanto você se prepara para adentrar a dungeon.");
+
+            } else {
+
+              jogador.vida += 500;
+
+              alert("Parabéns, você ganhou 500 de vida")
+
+              alert("Você decide explorar a área circulante, esperando encontrar pistas ou recursos valiosos que possam ajudá-lo em sua missão. Enquanto explora, nora algumas marcas entalhadas nas árvores próximas que lhe deixam curioso, você continua a busca e finalmente descobre algo: um frasco misterioso escondido entre as folhas caídas, ele contém uma substância brilhante de cor azul intensa. Intrigado, você examina mais de perto o frasco e percebe que se trata de uma poção mágica. A etiqueta, escrita em uma língua antiga, sugere que a opção tem propriedades de cura.");
+            }
+          }
+
+          alert("Ao entrar na masmorra, você percebe que as paredes estão cobertas por símbolos estranhos, emitindo uma luz fraca na penumbra. O ar dentro está impregnado com o cheiro forte de morte e decomposição, fazendo sua pele arrepiar. Você consegue ouvir os sons distantes de algo se movendo nas profundezas da masmorra, mas não consegue indentificar exatamente o que é.");
+
+          let decisao2 = prompt("O que você deseja fazer ?\nA - seguir caminhando\nB - analisar o interior da caverna").toUpperCase();
+
+          if (decisao2 != "A" && decisao2 != "B" && decisao2 != null) {
+            do {
+              decisao1 = prompt("Só pode escolher A ou B. O que você deseja fazer ?\nA - seguir caminhando\nB - analisar o interior da caverna").toUpperCase();
+            } while (decisao2 != "A" && decisao2 != "B" && decisao2 != null);
+          }
+
+          if (decisao2 == "A" || decisao2 == "B") {
+        
+            if (decisao1 == "A") {              
+
+              if (Math.random() > 0.5) {
+
+                jogador.vida -= 200;
+
+                alert("Ao seguir caminhando você tropeça perde 200 de vida");
+
+              } else {
+
+                alert("Ao seguir caminhando pela caverna, o tempo passa e a sua equipe de aventureiros começa a ganhar confiança, a atenção vai se dispersando e quando notam, todos estão fazendo piadas em tom de voz descontraído. Tudo parece estar indo bem até que todos começam a ouvir um ruído arrepiante surgindo em meio a suas vozes, o clima alegre se dissipa repentinamente, todos ficam alertas e em silêncio, tentando observar o que os espera pela frente.");
+
+              }
+            } else {
+
+              alert("Ao analisar o interior da caverna, você nota que o piso está repleto de ossos de animais, deixando o cheiro pútrido ainda mais evidente, você começa a observar a paredes da caverna e encontra um objeto pendurado...");
+
+              let decisao3 = prompt("O que você deseja fazer ?\na - sair fora\nb - examiná-la").toLowerCase();
+
+              if (decisao3 == "a" || decisao3 == "b") {
+                if (decisao3 != "a" && decisao3 != "b" && decisao3 != null) {
+                  do {
+                    decisao3 = prompt("Só pode escolher a ou b. O que você deseja fazer ?\na - sair fora\nb - examiná-la").toUpperCase();
+                  } while (decisao3 != "a" && decisao3 != "b" && decisao3 != null);
+                }
+              }
+
+              if (decisao3 == "a"){   
+
+                alert("Ao sair fora, você tropeça em um monte de ossos. O estrondo ecoa pelo ambiente e o barulho rompe o silêncio, alertando aqueles que vivem nas profundezas da caverna...")
+
+              } else {      
+
+                jogador.poder +=500;
+
+                alert("O objeto parece ser uma lanterna antiga, coberta de poeira e teias de aranha. Ao se aproximar para examiná-la, você percebe que ainda há vestígios de óleo dentro dela, e ao tocar nela você a derruba abruptamente com um estrondo alto, ecoando pelo ambiente. O barulho rompe o silêncio, deixando a equipe tensa e alerta, tentando prestar atenção ao que os espera adiante + PODER\nParabéns, você recebeu 500 de vida.")
+
+              }
+            }   
+
+            alert("Ao olhar adiante, sua equipe depara-se com um grupo de esqueletos dispostos em uma formação ameaçadora. Suas figuras ósseas parecem animadas e prontas para o combate enquanto ficam próximas a um cristal que emite uma luz fraca. As órbitas vazias dos olhos focam em você com uma intensidade sinistra conforme você se aproxima cautelosamente, sentindo a presença ameaçadora dos mortos-vivos");
+
+            let decisao4 = prompt("O que você deseja fazer ?\nA - lutar\nB - correr").toUpperCase();
+
+            if (decisao4 == "A" || decisao4 == "B") {
+
+                if (decisao4 != "A" && decisao4 != "B" && decisao4 != null) {
+                  do {
+                    decisao4 = prompt("Só pode escolher A ou B. O que você deseja fazer ?\nO que você deseja fazer ?\nA - lutar\nB - correr").toUpperCase();
+                  } while (decisao4 != "A'" && decisao4 != "B" && decisao4 != null);
+                }          
+            }
+
+            if (decisao4 == 'A'){    
+
+              jogador.vida += 200;
+              jogador.poder +=30;  
+              
+              let nomeInimigo = prompt("Dê um nome para o exército de esqueletos")
+          
+              inimigo.nome = nomeInimigo.toUpperCase();  
+              inimigo.vida = 1500;
+              inimigo.poder =500;
+
+              alert("Lutar contra " + nomeInimigo)
+              
+              let resultado = batalha();
+
+              if (resultado == true){
+
+                alert ("Finalmente o Exército foi conquistado! Uma sensação de paz invade cada centímetro da câmara...Num piscar de olhos você está em uma planície muito peculiar e ao mesmo tempo fampilia também...você percebe que está diante de três portas...");
+
+                let decisao5 = prompt("O que você deseja fazer ?\nA - Porta de Ouro\nB - Porta de ferro\nC - Porta da casa de seus pais").toUpperCase();
+
+                if (decisao5 == "A" || decisao5 == "B"|| decisao5 == "C") {
+
+                    if (decisao5 != "A'" && decisao5 != "B" && decisao5 != "C" && decisao5 != null) {
+                      do {
+                        decisao5 = prompt("Só pode escolher A ou B ou C. O que você deseja fazer ?\nA - Porta de Ouro\nB - Porta de ferro\nC - Porta da casa de seus pais").toUpperCase();
+                      } while (decisao5 != "A'" && decisao5 != "B" && decisao5 != "C" && decisao5 != null);
+                    }
+                }
+
+                if (decisao5 == "A" || decisao5 == "B"){
+
+                  if (decisao5 == "A"){
+
+                    alert("Você escolhe a Porta de Ouro. Atrás dela você encontra muito ouro, cristal, etc...você começa a imaginar todas a glória e poder que poderá obter com este tesouro praticamente infinito. Assim que você toca a primeira moeda a seu alcance uma voz grave e ecoante chama seu nome... 'Então você prefere assim ? Acha que é fácil ?'...o <nome do inimigo> surge com uma aura de poder nunca antes vista.... ");
+
+                    inimigo.poder += 500;
+
+                  } else {
+
+                    alert("Você escolhe a Porta de Ferro, após atravessá-la tudo a sua volta desaparece, o infinito é seu novo horizonte...alguns minutos se passam até que você consegue escutar alguém chamando por seu nome...Finalmente você conseguiu chegar até minha morada...Seus passos até aqui foram fáceis, não espera nenhum tipo de alívio agora...")
+
+                  }
+
+                  let nomeInimigo = prompt("Digite o nome do inimigo")
+
+                  inimigo.nome = nomeInimigo.toUpperCase();
+
+                  alert ("Lutar contra " + nomeInimigo)
+
+                  jogador.vida += 8000;
+
+                  let resultado =  batalha();
+
+                  if (resultado == true){
+
+                    alert("O " + nomeInimigo + " não mais nos assombrará! É hora de voltar a vila e comemmorar com o povo....")
+
+                      let decisao6 = prompt("F I M\nO que deseja fazer?\nA - Sair\nB - Recomeçar").toUpperCase();
+
+                      if (decisao6 == "A" || decdecisao6isao5 == "B") {
+
+                        if (decisao6 != "A'" && decisao6 != "B" && decisao6 != null) {
+                          do {
+                            decisdecisao6ao5 = prompt("Só pode escolher A ou B. O que deseja fazer?\nA - Sair\nB - Recomeçar").toUpperCase();
+                          } while (decisao6 != "A'" && decisao6 != "B" && decisao6 != null);
+                        }
+
+                        if (decisao6 == "A"){
+
+                          fim = true;
+
+                        }
+
+                      }
+
+                  } else {
+
+                    alert("Por quantos séculos mais " + nomeInimigo.toUpperCase() + " reinará nas sombras de nosso vale? Tudo fica escuro e quieto...\nREINICIO DO JOGO")
+
+                  }
+                 
+                } else if (decisao5 == "C"){
+
+                  alert("Você escolhe a Porta da casa dos seus Pais, ao atravessá-la você sente quente e cada vez mais pesado, estranhamente isso não o incomoda....\nREINICIO DO JOGO")
+                  
+                } else {
+
+                  fim == true;
+                 
+                }
+
+              } else {
+
+                alert("Não foi dessa vez que você derrotou o antigo Exército de Esqueletos...tudo fica escuro e quieto...\nREINICIO DO JOGO");
+
+              }
+
+            } else {
+
+              alert("Ao sair correndo você bate com a cabeça num pilar de pedra e perde a consciência.\nREINICIO DO JOGO")
+
+            }            
+
+          } else {
+
+            fim == true;
+
+          }
+
+        } else {
+
+          fim == true;
+
+        }
+      }
+  
+  } while (fim == false);
+   
+function batalha () {
+
+  alert("Luta contra " + inimigo.nome + "\nStatus do inimigo:\nvida = " + inimigo.vida + "\npoder = " + inimigo.poder)
+
+  do {      
+
+    let ataque = prompt("Seu turno, escolha um ataque: \n1 - ataque normal\n2 - ataque combo\n3 - ataque especial")
+    
+    if (ataque == null){
+      return false;
+    }
+
+    let dado = (Math.random()*6) + 1;
+    
+    alert("Você jogou o dado e o resultado foi " + parseInt(dado))
+
+    if (ataque == "1"){
+
+      inimigo.vida -= jogador.poder;
+
+      alert("Você desferiu um ataque simples com sucesso!\nO " + inimigo.nome + " sofreu " + jogador.poder + "de dano. Ainda restam " + inimigo.vida + " pontos de vida.") 
+    }
+
+    if (ataque == "2"){
+      
+      if (dado > 2){
+
+        inimigo.vida -= (jogador.poder * 1.5);
+
+        alert("Você desferiu um ataque combo com sucesso! O " + inimigo.nome + " sofreu " + (jogador.poder * 1.5) + " de dano. Ainda restam " + inimigo.vida + " pontos de vida.")
+
+      } else {
+
+        alert("Você desferiu um ataque combo mas errou. O " + inimigo.nome + " não sofreu dano! Ainda restam " + inimigo.vida + " pontos de vida...")
+
+      }
+    }
+
+    if (ataque == "3"){
+
+      if (dado > 3){
+
+        inimigo.vida -= (jogador.poder * 2);
+
+        alert("Você desferiu um ataque especial com sucesso! O " + inimigo.nome + " sofreu " + (jogador.poder * 2) + " de dano. Ainda restam " + inimigo.vida + " pontos de vida....")
+
+      } else {
+
+        alert("Você desferiu um ataque especial mas errou. O " + inimigo.nome + " não sofreu dano! Ainda restam " + inimigo.vida + " pontos de vida...")
+
+      }
+    } 
+      
+    if (Math.random() > 0.3){
+
+      jogador.vida -= inimigo.poder;
+
+      alert("Turno do inimigo: O " + inimigo.nome + " usa ataque 7.0, você perdeu " + inimigo.poder + " pontos de vida e está com " + jogador.vida + " de HP")
+
+    } else {
+
+      alert("Turno do inimigo: O " + inimigo.nome + " usa ataque 3.0 mas falhou! Você continua com " + jogador.vida + " de HP")
+
+    }
+
+  } while (inimigo.vida >= 1 && jogador.vida >= 1);
+
+  if ( inimigo.vida >= 1){
+
+    alert ( jogador.nome + "infelizmente não foi dessa vez...tenta novamente ;)" )
+
+    return false;
+
+  } else {
+
+    alert("Parabéns, você venceu a batalha contra " + inimigo.nome + ", a equipe comemora pelo grande feito.")
+
+    return true;
+  }
+  
+}
+
+  </script>
+</head>
+
+<body></body>
+
+</html>
